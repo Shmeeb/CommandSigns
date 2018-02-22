@@ -17,7 +17,6 @@ public class SetCommandSignExecutor implements CommandExecutor
 {
 	public CommandResult execute(CommandSource src, CommandContext ctx) throws CommandException
 	{
-		boolean oneTime = ctx.<Boolean> getOne("one time").get();
 		String command = ctx.<String> getOne("command").get();
 
 		if (src instanceof Player)
@@ -30,7 +29,7 @@ public class SetCommandSignExecutor implements CommandExecutor
 				CommandSigns.commandSignModifiers.remove(commandSignModifier.get());
 			}
 
-			CommandSigns.commandSignModifiers.add(new CommandSignModifier(command, player.getUniqueId(), oneTime));
+			CommandSigns.commandSignModifiers.add(new CommandSignModifier(command, player.getUniqueId()));
 			player.sendMessage(Text.of(TextColors.DARK_RED, "[CommandSigns]: ", TextColors.GOLD, "Right click a Tile Entity (something like a sign)!"));
 		}
 		else
